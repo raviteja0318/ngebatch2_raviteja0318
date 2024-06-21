@@ -7,33 +7,37 @@ Run this with
 import { add, safeMultiply } from './maths-utils'
 
 describe('When calling the Add function', () => {
-  it('should add two integers', () => {
-    // Arrange: Setup variables here
 
-    // Act: Call function here
+  let result:number
+    //Arrange
+    console.log("To setup the data ");
+    //Act
+    console.log("Call the function");
+    beforeEach(()=>{
+      result=add('10',15);
+    })
+    //Assert
+    it('will return true or false when called', () => {
+      expect(result).toBe(25);
+    })
 
-    // Assert: Check results here
-
-  })
-
-  it('will add strings and numbers', () => {
-    // Arrange: Setup variables here
-
-    // Act: Call function here
-
-    // Assert: Check results here
-  })
+    it('will add strings and numbers', () => {
+    expect(result).toBe('1015')
+    })
 })
 
 describe('When calling the safeMultiply function', () => {
-
+  let product:number
+    //Arrange
+    console.log("To setup the data ");
+    //Act
+    console.log("Call the function");
+    beforeEach(()=>{
+      product=safeMultiply(6,5);
+  })
+  //Assert
   it('should multiply two integers', () => {
-    // Arrange: Setup variables here
-    // Hint: happy case
-
-    // Act: Call function here
-
-    // Assert: Check results here
+    expect(product).toBe(30)
 
   })
 
@@ -45,6 +49,9 @@ describe('When calling the safeMultiply function', () => {
         
     // Assert
     // Hint: use "toThrow()"
+    expect(()=>{
+      safeMultiply('abc',7)
+    }).toThrow("Parameters a and b must be numeric but got a='abc' and b=7")
   })
     
   it('will throw an error when parameter b is bad', () => {
@@ -54,5 +61,8 @@ describe('When calling the safeMultiply function', () => {
         
     // Assert: Check results here
     // You can either do this with a wrapper function and .toThrow, or you can try using a try/catch block
+    expect(()=>{
+      safeMultiply(5,'def')
+    }).toThrow("Parameters a and b must be numeric but got a=5 and b='def'")
   })
 })

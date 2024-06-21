@@ -3,3 +3,7 @@ export function addToArray(arrayVariable: string[], itemToAdd: string) {
 
   return arrayVariable
 }
+
+let animalArray = ['Early Bird']
+console.log(addToArray(animalArray,'Timely Hippo'))
+

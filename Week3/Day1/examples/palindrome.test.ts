@@ -18,8 +18,8 @@ describe('When calling the palindrome function', () => {
     })
     //Assert
     it('will return true or false when called', () => {
-    expect(res).toBeFalsy();
-  })
+      expect(res).toBeFalsy();
+    })
 })
 
 describe('When calling the palindrome function', () => {

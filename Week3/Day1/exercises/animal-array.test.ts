@@ -10,6 +10,7 @@ Run with
 // - Make sure the array is empty after each test
 
 //This is a test that shows you how the function works and can be tested
+
 it('I can add an item to an existing array', () => {
   //ARRANGE
   const animalArray: string[] = []
@@ -25,18 +26,24 @@ it('I can add an item to an existing array', () => {
 
 describe('Every test has early bird at the start of the array', () => {
 
-  let animalArray = []
+  let animalArray = ['Early Bird']
 
   beforeEach(() => {
-
+    let finalArray:string[] = [];
+    finalArray = addToArray(animalArray,'Timely Hippo')
   })
 
   it('Adds the item Timely Hippo to an existing array that has Early Bird in it', () => {
-
+    expect(() => {
+      addToArray(animalArray,'Timely Hippo')
+    }).toStrictEqual(['Early Bird','Timely Hippo'])
+    expect(finalArray).toEqual(['Early Bird','Timely Hippo'])
   })
 
   it('Adds Timely Hippo and Regular Rat to an existing array that has Early Bird in it', () => {
-
+    expect(() => {
+      addToArray(animalArray,'Timely Hippo')
+    }).toStrictEqual(['Early Bird','Timely Hippo'])
   })
 
 })
