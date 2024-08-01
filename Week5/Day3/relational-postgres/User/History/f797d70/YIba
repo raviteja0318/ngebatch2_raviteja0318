@@ -1,0 +1,4 @@
+insert into pokemon(player_id,pokemon_name,pokemon_type) values(1,'abc','NORMAL');
+insert into pokemon(player_id,pokemon_name,pokemon_type) values(2,'def','FIRE');
+insert into pokemon(player_id,pokemon_name,pokemon_type) values(3,'ghi','WATER');
+insert into pokemon(player_id,pokemon_name,pokemon_type) values(4,'jkl','GRASS');

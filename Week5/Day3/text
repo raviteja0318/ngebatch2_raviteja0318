@@ -1,0 +1,64 @@
+- A CREATE TABLE for Pokemon details 
+(pokemon_id, pokemon_name, pokemon_type)
+
+CREATE TABLE pokemon(pokemon_id INTEGER GENERATED ALWAYS AS IDENTITY,
+pokemon_name VARCHAR(100),pokemon_type VARCHAR(100),PRIMARY KEY(pokemon_id));
+
+- A CREATE TABLE for the Users of your system 
+(player_id, first_name, last_name)
+
+CREATE TABLE users(player_id INTEGER,
+first_name VARCHAR(100),last_name VARCHAR(100),PRIMARY KEY(player_id));
+
+- A CREATE TABLE for a _mapping_ table for the Pokemon you have collected 
+to link the two tables above
+    - I.e it should have the pokemon_id and player_id only
+
+create TABLE mapping(pokemon_id INTEGER,
+player_id INTEGER,PRIMARY KEY(pokemon_id),CONSTRAINT fk_pokemon 
+FOREIGN KEY(player_id) REFERENCES users(player_id));
+
+- A data file to INSERT sample data into all the above tables
+
+insert into pokemon(pokemon_name,pokemon_type) values('abc','NORMAL');
+insert into pokemon(pokemon_name,pokemon_type) values('def','FIRE');
+insert into pokemon(pokemon_name,pokemon_type) values('ghi','WATER');
+insert into pokemon(pokemon_name,pokemon_type) values('jkl','GRASS');
+
+insert into users(player_id, first_name, last_name) values(101,'ravi','teja');
+insert into users(player_id, first_name, last_name) values(102,'sagar','krishna');
+insert into users(player_id, first_name, last_name) values(103,'venu','gopal');
+insert into users(player_id, first_name, last_name) values(104,'ravi','shankar');
+
+insert into mapping(pokemon_id,player_id) values(1,101);
+insert into mapping(pokemon_id,player_id) values(2,102);
+insert into mapping(pokemon_id,player_id) values(3,103);
+insert into mapping(pokemon_id,player_id) values(4,104);
+
+- A data file to INSERT sample data into all the above tables
+- Set this up in your postgres container
+- Make and run a SELECT that lists all pokemon
+
+select * from pokemon;
+
+- Make and run a SELECT that lists all pokemon and all linked player id 
+in the mapping table (JOINs)
+
+SELECT pokemon.pokemon_id,pokemon.pokemon_name,pokemon.pokemon_type,
+mapping.player_id from pokemon INNER JOIN mapping ON 
+pokemon.pokemon_id = mapping.pokemon_id ORDER BY pokemon.pokemon_id;
+
+- Make and run a SELECT that lists all players and all linked pokemon ids 
+in the mapping table (JOINs)
+
+SELECT users.player_id,users.first_name,users.last_name,mapping.pokemon_id
+from users INNER JOIN mapping ON users.player_id = mapping.player_id 
+ORDER BY users.player_id;
+
+- Make and run a SELECT that lists all pokemon and all players via 
+the mapping table (i.e. JOINs all three tables)
+
+SELECT pokemon.pokemon_id,pokemon.pokemon_name,pokemon.pokemon_type,
+mapping.player_id,users.first_name,users.last_name 
+from pokemon JOIN mapping ON pokemon.pokemon_id = mapping.pokemon_id
+JOIN users ON users.player_id = mapping.player_id;

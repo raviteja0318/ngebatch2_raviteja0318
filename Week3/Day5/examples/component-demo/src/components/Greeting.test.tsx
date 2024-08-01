@@ -2,8 +2,9 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 import Greeting from './Greeting'
-
+//Test suite
 describe('Display Greeting', () => {
+  //Test Case or Test Spec
   it('should render a personalised welcome message', () => {
     render(<Greeting name={'Alice'} isBirthday={true} />)
 

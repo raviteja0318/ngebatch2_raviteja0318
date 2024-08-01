@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Greeter,{Hello} from "./components/Greeter";
+import StateDemo from "./components/StateDemo";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +13,8 @@ function App() {
     <h1>React Learnings</h1>
     <Greeter/>
     <Greeter/>
-    <Hello/>
+      <Hello />
+      <StateDemo/>
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
